@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Labirinto</title>
+  <style>
+    /* Estilos gerais */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Área do labirinto */
+    #labirinto {
+      width: 300px;
+      height: 300px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      gap: 5px;
+      position: relative;
+    }
+
+    /* Paredes do labirinto */
+    .parede {
+      background-color: black;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Caminho no labirinto */
+    .caminho {
+      background-color: lightgray;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Ponto de início e fim */
+    .inicio, .fim {
+      background-color: green;
+    }
+
+    .fim {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Não toque nas paredes!</h2>
+
+<div id="labirinto">
+  <!-- Primeira linha -->
+  <div class="inicio caminho" onmouseenter="resetarLabirinto()">Início</div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+
+  <!-- Segunda linha -->
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+
+  <!-- Terceira linha -->
+  <div class="caminho"></div>
+  <div class="caminho"></div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="fim caminho" onmouseenter="chegouAoFim()">Fim</div>
+
+  <!-- Quarta linha -->
+  <div class="parede"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+
+  <!-- Quinta linha -->
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="caminho"></div>
+
+  <!-- Sexta linha -->
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+  <div class="parede"></div>
+  <div class="caminho"></div>
+</div>
+
+<script>
+  // Função que reinicia o labirinto
+  function resetarLabirinto() {
+    alert("Você tocou na parede! Volte para o início.");
+  }
+
+  // Função para mostrar mensagem ao chegar ao fim
+  function chegouAoFim() {
+    alert("Parabéns, você chegou ao fim do labirinto!");
+  }
+
+  // Adiciona o evento em todas as paredes
+  document.querySelectorAll('.parede').forEach(parede => {
+    parede.onmouseenter = resetarLabirinto;
+  });
+</script>
+
+</body>
+</html>
